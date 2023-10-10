@@ -1,0 +1,26 @@
+Oldd meg az alábbi feladatot:
+• Írj Butorlap osztályt, ami egy bútorlapot valósít meg, és helyezd el a butorgyar csomag-
+ba.
+– Egy bútorlapról el kell tárolni a hosszúságát, szélességét, valamint típust (ez tartólap
+és hátlap lehet).
+– létre két konstans adattagot is, mely a tartólap és hátlap négyzetméterenkénti árát
+tartalmazza (ez legyen 5000 ill. 500)
+– Írj az osztálynak konstruktort, ami a bútorlap típusát, valamint hosszúságát és széles-
+ségét kapja meg cm-ben, és ezek alapján állítja be a mezők értékét. (!!m-cm konverzió
+kell a négyzetméterenkénti ár miatt!!)
+– Írj egy arSzamol metódust is, ami a bútorlap árát számolja ki a méret és típus alap-
+ján.
+• Írj egy Butor osztályt is a butorgyar csomagba bútorok megvalósítására.
+– Egy bútor megadja, hogy mennyi lapot tartalmaz, valamint tárolja a bútorlapjait egy
+külön tömbben.
+– Legyen olyan konstruktora, ami kellően nagy méretű tömböt (pl. 100 elem) hoz létre
+a bútorlapoknak, valamint a bútorlapok számát állítsa 0-ra.
+– Hozz létre olyan lapHozzaad metódust, ami hozzáad egy bútorlapot a tömbhöz.
+– Hozz létre olyan arSzamol metódust, ami kiszámolja a tömbben lévő bútorlapok alap-
+ján a bútor teljes árát.
+– Az osztály legyen String formára alakítható a következő módon: "Butor - lapok: x, ar
+y Ft"
+• Írj egy, a butorgyar csomagon kívül futtatható osztályt, ebben:
+– Hozz létre egy Butor objektumot.
+– Hozz létre Butorlap objektumokat, és add hozzá a Butorhoz.
+– Írasd ki a Butor objektumot.
