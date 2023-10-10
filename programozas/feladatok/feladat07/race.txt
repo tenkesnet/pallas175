@@ -1,0 +1,5 @@
+Verseny1
+3
+Versenyzo1,versenyA,versenyB,versenyC,versenyD
+Versenyzo2,versenyA,versenyE
+Versenyzo3,versenyB,versenyC,versenyF
