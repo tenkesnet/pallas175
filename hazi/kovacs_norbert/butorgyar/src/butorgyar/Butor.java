@@ -24,7 +24,7 @@ class Butor {
         return teljesAr;
     }
 
-    
+    @Override
     public String toString() {
         return "Butor - lapok: " + butorlapokSzama + ", ar " + arSzamol() + " Ft";
     }
