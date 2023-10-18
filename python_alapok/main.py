@@ -1,5 +1,5 @@
 from math import pow as hatvany
-
+import util.kor as kor
 
 def udvozold(message="Cső",tipus="világ"):
     print(f"{message} {tipus}")
@@ -14,7 +14,7 @@ osszeg,szorzat = osszeadEsSzoroz(10,20)
 
 print(f"Összeg: {osszeg} , Szorzat: {szorzat} Az összeg négyzete {hatvany(osszeg,2)}")
 
-
+print(f"A 5 sugarú kör területe: {kor.area(5)}")
 
 
 #print(): Prints text to the console.
