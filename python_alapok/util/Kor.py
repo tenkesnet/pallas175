@@ -2,9 +2,16 @@ import math
 
 class Kor:
     name="Kör1"
-    def __init__(self,radius,pont):
+    def __init__(self,name: str,radius: float,pont:tuple):
+        """
+        Parameters
+        name: String 
+        radius: number
+        pont: any
+        """
         self.radius= radius
         self.centerPont = pont
+        self.name=name
     
     def area(self):
         return math.pi * self.radius ** 2
