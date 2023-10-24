@@ -1,0 +1,1 @@
+/home/bardo/repo/pallas/pallas146/magyar-szavak-kat.txt
