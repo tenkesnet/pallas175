@@ -1,0 +1,298 @@
+<HTML><HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<TITLE>SQL Példatár</TITLE>
+</HEAD>
+
+<BODY>
+<h1>2. FELADATOK</h1>
+<h2>2.1. Egyszerű feladatok</h2>
+<P>
+<B>1.</B> Mely adatbázis objektum nevek szabályosak és melyek nem a következők közül:<BR>
+(a) TIPUS<BR>
+(b) _UTOLSO_VALTOZO <BR>
+(c) no_@_10p_per_unit <BR>
+(d) nagy_eves_profit <BR>
+(e) character<BR>
+(f) p71$<BR>
+(g) eves_nyereseg_napi_szazaleka_plus_eves_nyereseg</P>
+<P>
+<B>2.</B> Írjon érvényes konstansokat a következő adattípusokra: <BR>
+(a) char(10)<BR>
+(b) NUMBER <BR>
+(c) NUMBER(9,4)<BR>
+(d) NUMBER(5)</P>
+<P>
+<B>3.</B> Gépelje be a következő helytelen utasítást, ahogy bemutatjuk! Javítsa ki, majd futtassa újra!<br>
+SELECT FRUM AUTOK;</P>
+<P>
+<B>4.</B> Szabályos konstansok-e a következők: <BR>
+(a) 22-mar-94<BR>
+(b) 'XXxxXX' <BR>
+(c) 123?3 <BR>
+(d) 26B <BR>
+(e) '26B' <BR>
+(f) 3456.76<BR>
+(g) 15$</P>
+
+<h2>2.2. Egyszerű lekérdezések</h2>
+<P><B> 5.</B> Irassa ki az egyes autók típusát, a vásárlás idejét és a beszerzési árat!</P>
+<P><B> 6.</B> Irassa ki SELECT utasítással az AUTOK táblából az összes autó rendszámát, típusát és árát! A kiírás az ár szerinti csökkenő sorrendben történjen!</P>
+<P><B> 7.</B> Irassa ki az AUTOK táblából az autók rendszámát és árát!</P>
+<P><B> 8.</B> Irassa ki az 1350000 Ft-nál drágábban vásárolt autók típusát és árát!</P>
+<P><B> 9.</B> Irassa ki az 1350000 Ft-nál drágábban vásárolt autók típusát, árát és autócsoport nevét a csoport szerint növekvő, az ár szerint csökkenő sorrendben!</P>
+<P><B>10.</B> Irassa ki az összes olyan autó rendszámát és típusát, amelyek nem az EXTRA autócsoporthoz tartoznak!</P>
+<P><B>11.</B> Irassa ki azon autók adatait az AUTOK táblából, amelyek 9000 km nél többet futottak és áruk 1000000 Ft alatt van!</P>
+<P><B>12.</B> Irassa ki az összes kifizetett rendelésre vonatkozó adatot!</P>
+<P><B>13.</B> Irassa ki az 1994. március 1. előtti megrendelésekben szereplő adatokat!</P>
+<P><B>14.</B> Irassa ki az 1994. március 1. után esedékes, nem kifizetett megrendelés adatokat!</P>
+<P><B>15.</B> Irassa ki az összes olyan autó rendszámát, típusát és a futott kilométert, amelyek a 20-as részleghez tartoznak!</P>
+<P><B>16.</B> Irassa ki az összes olyan autó adatait, amelyet 1994. január 1. előtt vásároltak!</P>
+<P><B>17,</B> Irassa ki az ALKALMAZOTT táblából a munkatársak nevét, beosztását és fizetését, fizetés szerint csökkenő (növekvő) sorrendben!</P>
+<P><B>18.</B> Irassa ki az ALKALMAZOTT tábla tartalmát beosztás szerint növekvő, ezen belül fizetés szerint csökkenő sorrendben!
+<P><B>19.</B> Irassa ki az ALKALMAZOTT táblából az összes különböző beosztás nevét!</P>
+<P><B>20.</B> Irassa ki az'ELADÓ' és'SZERELŐ' foglalkozású dolgozókat fizetés szerint csökkenő sorrendben!</P>
+<P><B>21.</B> Irassa ki az ALKALMAZOTT táblából azokat, akiknek a fizetése nagyobb 50000-nél vagy a beosztásuk 'SZERELŐ' a belépés dátuma szerinti sorrendben!</P>
+<P><B>22.</B> Irassa ki azokat, akiknek a fizetése 60000-nél kisebb vagy 100000 nél nagyobb!</P>
+<P><B>23.</B> Irassa ki az ALKALMAZOTT táblából azokat a dolgozókat, akik a 20-as vagy 50-es kódú részlegben dolgoznak!</P>
+<P><B>24.</B> Irassa ki a 30-nál nagyobb kódú munkahelyen dolgozók adatait!
+<P><B>25.</B> Irassa ki a vidéki (nem budapesti) részlegek adatait!</P>
+<P><B>26.</B> Irassa ki városnév szerint rendezve az ügyfelek és városuk nevét!</P>
+<P><B>27.</B> Irassa ki azon ügyfelek adatait, akik készpénzzel (átutalással) fizetnek!</P>
+<P><B>28.</B> Irassa ki azon rendelések adatait, amelyeknél a kölcsönzési idő 1 hétnél hosszabb!</P>
+<P><B>29.</B> Irassa ki azon rendelésekre vonatkozó adatokat, amelyeket már kifizettek!</P>
+<P><B>30.</B> Irassa ki az AUTO_CSOP tábla tartalmát kilométer díj szerint csökkenő sorrendben!</P>
+<P><B>31.</B> Irassa ki az egyes autótípusoknál a tipus név mellé a kötelező karbantartás (szervízbe vitel) kilométer intervallumát! A kiírás a típus neve szerint legyen rendezve!</P>
+<P><B>32.</B> Irassa ki azon autók adatait, amelyek 100000 kilométernél többet futottak!</P>
+<P><B>33.</B> Készítsen listát a kiadható autók adatairól!</P>
+<P><B>34.</B> Készítsen listát azokról az autókról, amelyek szervízben vannak, vagy karbantartásra várnak és ezért nem adhatók ki kölcsönzésre!</P>
+<P><B>35.</B> Készítsen név szerint rendezett listát az ügyfelekről tárolt adatokról!</P>
+<P><B>36.</B> Irassa ki a LUXUS autócsoporthoz tartozó autók rendszámát és típusát!</P>
+<P><B>37.</B> Irassa ki azokat az autó típusokat, melyeket 15000 kilométerenként kell szervízbe vinni!</P>
+<P><B>38.</B> Készítsen listát azokról a városokról, ahol az autókölcsönzőnek részlege van!</P>
+<P><B>39.</B> Irassa ki a debreceni ügyfelek adatait!</P>
+<P><B>40.</B> Irassa ki a rendeléseknél kapcsolatot tartó személyek nevét névsor szerint rendezve!</P>
+
+<h2>2.3. Bonyolultabb keresési feltételek</h2>
+<P>(NVL függvény, BETWEEN szám AND szám, IN (lista), LIKE minta (% és _ jel), IS NULL, IS NOT NULL)</P>
+<P><B>41.</B> Irassa ki az alkalmazottak nevét, beosztását és jövedelmét (fizetés + prémium) névsor szerinti sorrendben!</P>
+<P><B>42.</B> Irassa ki azokat a dolgozókat, akiknek fizetése 50000 és 100000 Ft közötti!</P>
+<P><B>43.</B> Készítsen listát a 120000 és 200000 közötti kilométert futott autókról!</P>
+<P><B>44.</B> Irassa ki azon dolgozók adatait, akiknek a beosztása 'TELEPHELYVEZETŐ' vagy 'SZERELŐ'!</P>
+<P><B>45.</B> Irassa ki a 10, 20 vagy 60-as telepen dolgozók adatait!</P>
+<P><B>46.</B> Irassa ki azon dolgozók adatait akiknek a neve 'H' betűvel kezdődik!</P>
+<P><B>47.</B> Irassa ki az ALKALMAZOTT tábla tartalmát azokra, akiknek a nevében 'O' betű szerepel!</P>
+<P><B>48.</B> Irassa ki azon alkalmazottak adatait, akik nevének második betűje az 'O' betű!</P>
+<P><B>49.</B> Irassa ki azokat a részlegre vonatkozó adatokat, amelyek nevében nem szerepel az 'AUTO'!</P>
+<P><B>50.</B> Irassa ki azon alkalmazottak adatait, akik a 10-es részlegben dolgoznak és beosztásuk 'ELADÓ', vagy nem kaptak prémiumot!
+<P><B>51.</B> Készítsen listát azon dolgozók adatairól, akik fizetése 60000 és 90000 Ft közötti és beosztásuk nem 'TELEPHELYVEZETŐ' vagy ELADÓ!</P>
+<P><B>52.</B> Készítsen listát azokról a dolgozókról, akik nem kaptak prémiumot!
+<P><B>53.</B> Irassa ki azon dolgozók adatait, akiknek a fizetése kisebb, mint a prémiumuk kétszerese!</P>
+<P><B>54.</B> Irassa ki azokat a rendelés adatokat, amelyekben a kölcsönzés végén a kilométeróra állása legalább 1000-rel mutat többet, mint az elején vagy a kölcsönzött napok száma nagyobb 10-nél!</P>
+<P><B>55.</B> Készítsen listát azon megrendelésekben tárolt adatokról, amelyekben a következő rendszámú autók közül kölcsönöztek:<BR>
+ABC-123, ABR-047, BAH-115, CDE-324!</P>
+<P><B>56.</B> Irassa ki azon megrendelések adatait, amelyekben a kölcsönzött (nem kifizetett) autó típusnevében szerepel a RENAULT szó!</P>
+<P><B>57.</B> Készítsen listát azon autók adatairól, amelyek kilométer díja 100 és 300 Ft között van és napi kölcsönzési díja kevesebb, mint 6000 Ft!</P>
+<P><B>58.</B> Listázza ki azokat az autótípus jellemzőket, amelyek az E-vel kezdődő nevű autócsoportba tartoznak!</P>
+<P><B>59.</B> Irassa ki azon autótípus adatokat, ahol a kötelező szervízek intervalluma 10000 és 15000 kilométer között van és az autó típusneve nem a RENAULT szóval kezdődik!</P>
+<P><B>60.</B> Irassa ki az összes olyan megrendelés tételt, amely nincs kifizetve és a kölcsönzési idő 1994. január 1. előtt kezdődik vagy fizetve van és a kölcsönzés 1994. május 1. után esedékes!</P>
+
+<h2>2.4. Származtatott adatok</h2>
+<h3>2.4.1. Karakteres függvények</h3>
+<P>
+(UPPER, LOWER, INITCAP, LENGTH, SUBSTR, RPAD, LPAD, RTRIM, LTRIM)</P>
+<P><B>61.</B> Irassa ki az alkalmazottak nevét nagy kezdőbetűkkel, beosztásukat csupa kis betűvel!</P>
+<P><B>62.</B> Irassa ki az AUTOK táblájának minden sorából a típusneveket és a rendszámokat úgy, hogy a típus neveket kisbetűssé konvertálja!</P>
+<P><B>63.</B> Készítsen listát az összes készpénzzel fizető ügyfélről! Az ügyfél nevét, számát és a fizetési módját a következő szöveg után írja ki: 'ÜGYFÉL:'</P>
+<P><B>64.</B> Irassa ki az ügyfelek számát, nevét és megbízottját úgy, hogy a megbízott neve nagybetűvel kezdődjön és a többi karaktere kisbetűs legyen vagy 10 db '*' szerepeljen az üres mező helyén!</P>
+<P><B>65.</B> A 'minden|szo nagy,betuvel.kezdodik' karaktersorozatra alkalmazzuk az INITCAP függvényt! (DUAL tábla)</P>
+<P><B>66.</B> Irassa ki az alkalmazottak beosztását kisbetűvel és azt, hogy az alkalmazott neve hány karakterből áll!</P>
+<P><B>67.</B> Irassa ki a beosztásokat, és a beosztások 4-6. karakterét kisbetűssé alakítva!</P>
+<P><B>68.</B> Irassa ki az autók típusnevét jobbról a '"' karakterekkel 20 karakter hosszúra kiegészítve!</P>
+<P><B>69.</B> Irassa ki az autók típusnevét balról a '-' karakterekkel 20 karakter hosszúra kiegészítve!</P>
+<P><B>70.</B> Irassa ki a 'KAKAS' karaktersorozatot úgy, hogy balról vágjuk le az 'A' és 'K' karaktereket!</P>
+<P><B>71.</B> Irassa ki az alkalmazottak beosztását jobbról a '"' karakterekkel 25 karakter hosszúra kiegészítve!</P>
+<P><B>72.</B> Irassa ki az alkalmazottak beosztását balról a'-' karakterekkel 25 karakter hosszúra kiegészítve!</P>
+
+
+<h3>2.4.2. Numerikus függvények</h3>
+<P>(ABS, ROUND, TRUNC, SQRT, POWER, CEIL, FLOOR, MOD, SIGN)</P>
+<P><B>73.</B> Irassa ki az alkalmazottak nevét, fizetését és fizetésének címletezését! Hány db 5000, 1000, 500 és 100 Ft-os szükséges a kifizetéshez?</P>
+<P><B>74.</B> Írjon SELECT parancsot, amely kerekítve kiírja, hogy mennyibe kerül 3 napra 257 km-re egy'NORMAL' autócsoportba tartozó autó kölcsönzése!</P>
+<P><B>75.</B> Irassa ki a NORMAL autócsoport összes autójának típusát, kilométeróra állását! A futott kilométerek kiírását a 'KILOMÉTER ÓRA ÁLLÁSA:' szöveg előzze meg és a kiírás 10 ezer kilométerre kerekítve történjen!</P>
+<P><B>76.</B> Figyelje meg a numerikus függvények működését a következő konstansok SELECT utasításban való alkalmazásával! (DUAL tábla)<br>
+    (a) ABS(1000), ABS(-100) és ABS(-27.11) <BR>
+    (b) SORT(25), SQRT(-36)<BR>
+    (c) POWER(2,5)<BR>
+    (d) ROUND(-123.456,2), ROUND(123.456,0), . ROUND(123.456,-2), ROUND(-123.4567,2) <BR>
+    (e) TRUNC(123.45,1), TRUNC(123.45,0) TRUNC(123.45,-1), TRUNC(123.45,-2) <BR>
+    (f) SIGN(10), SIGN(0), SIGN(-5)<BR>
+    (g) CEIL(6.1), CEIL(-6.1)<BR>
+    (h) FLOOR(6.1), FLOOR(-6.1)<BR>
+    (i) MOD(10,3)</P>
+
+<h3>2.4.3. Dátum függvények</h3>
+<P>(ADD_MONTHS, MONTHS_BETWEEN, NEXT_DAY, LAST_DAY, TO_CHAR, TO_DATE)</P>
+<P><B>77.</B> Írassuk ki az AUTOK táblából a NORMAL autócsoport minden autójának rendszámát, típusnevét és vásárlási időpontját 'the 6 day of Jun, 1994'- hez hasonló formában!</P>
+<P><B>78.</B> Irassa ki azokat a rendelés adatokat, ahol a rendelés feladása és a kölcsönzés kezdete között 1 hétnél kevesebb idő van!</P>
+<P><B>79.</B> Készítsen listát az összes olyan rendelés tételről, ahol a kölcsönzési idő 10 napnál hosszabb!</P>
+<P><B>80.</B> Irassa ki az elmúlt 7 nap rendelés adatait! (SYSDATE)</P>
+<P><B>81.</B> Ha feltesszük, hogy az amortizáció az eredeti ár 3%-a havonta, akkor írassuk ki, hogy az 1994 előtt vásárolt autóknak mennyi a jelenlegi értéke!</P>
+<P><B>82.</B> Irassa ki a rendelések táblájából az ügyfelek számát, a rendelésük dátumát, valamint a kölcsönzés kezdetének időpontját a magyar szokásoknak megfelelően! (év. hó. nap.)</P>
+<P><B>83.</B> Írja ki a mai dátumot követő 90. nap dátumát! (SYSDATE)</P>
+<P><B>84.</B> Írja kí az alkalmazottak táblájából a belépés dátumát és annak 5 hónappal megnövelt értékét!</P>
+<P><B>85.</B> Írja ki minden alkalmazottra a rendszerdátum (SYSDATE) és a belépés dátuma közötti hónapok számát!</P>
+<P><B>86.</B> Írja ki a rendszerdátumhoz legközelebbi 'Friday' dátumát, valamint a hónap utolsó napjának dátumát!</P>
+<P><B>87.</B> Irassa ki a '1994. 06. 07.' karaktersorozat dátummá konvertált alakját!</P>
+<P><B>88.</B> Írja ki a belépés dátumát'YYYY.Month.DAY' formában!</P>
+<P><B>89.</B> Írja ki a saját születési dátumát betűkkel!</P>
+
+<h3>2.4.4. Egyéb függvények</h3>
+<P>(GREATEST, LEAST, DECODE)</p>
+<P><B>90.</B> Irassa ki minden dolgozónál a fizetést, a prémiumot és a kettő közül a kisebb (nagyobb) értéket!</P>
+<P><B>91.</B> Irassa ki az alkalmazottak beosztását, illetve annak minősítését a következőképpen: igazgató-FŐNÖK, telephelyvezető-KISFŐNÖK egyéb beosztásúak-BEOSZTOTT!</P>
+<P><B>92.</B> Irassa ki a telephelyek adatai mellé, hogy FŐVÁROSI illetve azt, hogy VIDÉKI, ha a cím mezőben BUDAPEST illetve attól különböző város szerepel!</P>
+
+<h3>2.4.5. Csoport függvények</h3>
+<P>(MIN, MAX, SUM, AVG, COUNT)</p>
+<P><B> 93.</B> Irassa ki az alkalmazottak táblájából a minimális, a maximális, az összes és az átlagfizetést, valamint a létszámot!</P>
+<P><B> 94.</B> Irassa ki a részlegkódot, a minimális, a maximálís, az összes és átlagfizetést, valamint a létszámot részlegenkénti csoportosításban!</P>
+<P><B> 95.</B> Irassa ki a beosztást, a minimális, a maxímális, az összes és átlagfizetést, valamint a létszámot beosztásonkénti csoportosításban!</P>
+<P><B> 96.</B> Irassa ki a részlegkódot, átlagfizetést azokra a részlegekre, ahol az átlagfizetés 8000 Ft-nál nagyobb!</P>
+<P><B> 97.</B> Irassa ki azon a részlegek kódját, ahol pontosan ketten dolgoznak! 98. Írjon SELECT parancsot, amely megadja a legmagasabb (legalacsonyabb) beszerzési árat!</P>
+<P><B> 99.</B> Írjon olyan SELECT parancsot, amely az AUTOK táblából kiírja a különböző autócsoportok nevét és a csoportban lévő autók számát!</P>
+<P><B>100.</B> Írjon SELECT parancsot, amely a készpénzzel fizető ügyfelek létszámát kiírja! Használja a HAVING utasításrészt azon ügyfelek kiírására, akik nem átutalással fizettek!</P>
+<P><B>101.</B> Irassa ki az AUTOK táblából a különböző típusokat, azt hogy melyikből hány darab van! Típusonként jelenjen meg az átlagos beszerzési ár! Az eredmény névsor szerint rendezve jelenjen meg!</P>
+<P><B>102.</B> Irassa ki az AUTOK táblából az átlagos beszerzési árat!
+<P><B>103.</B> Irassa ki a legtöbbet és a legkevesebbet futott autó adatait!</P>
+<P><B>104.</B> Irassa ki, hogy az AUTOK táblában hány autó adatai szerepelnek!
+<P><B>105.</B> Irassa ki típusnevenként csoportosítva az átlagos kilométeróra állást</P>
+<P><B>106.</B> Írja ki az ALKALMAZOTT tábla alapján a maxímálís és minimális fizetések eltérését az átlagtál!</P>
+<P><B>107.</B> Irassa ki típusnevenként csoportosítva a kiadható autók számát és átlagos beszerzési árát!</P>
+<P><B>108.</B> Irassa ki, mennyi volt az átlagos kölcsönzési idő az 1993. március 30. előtti (utáni) kölcsönzéseknél!</P>
+<P><B>109.</B> Irassa ki a már kifizetett rendelések számát!</P>
+<P><B>110.</B> Irassa ki azokat a megrendeléseket, ahol a kölcsönzés ideje alatt megtett kilométer a maximális illetve minimális!</P>
+<P><B>111.</B> Irassa ki a kölcsönzési idő alatt futott átlag km értéket!</P>
+<P><B>112.</B> Irassa ki a kikölcsönzött autók típus nevét és a kölcsönzések számát gyakoriság szerint csökkenő sorrendbe!</P>
+<P><B>113.</B> Melyik városban van a LUXRENT cég legtöbb ügyfele?</P>
+
+<h2>2.5. Táblák összekapcsolása</h2>
+<P><B>114.</B> Készítsen listát, amely tartalmazza a dolgozó nevét, beosztását, részleg kódját, a részleg nevét és címét névsor szerinti sorrendben!</P>
+<P><B>115.</B> Irassa ki az'ELADÓ' beosztású dolgozók nevét, részleg kódját és a részleg címét!</P>
+<P><B>116.</B> Irassa ki a Győrött dolgozók adatait!</P>
+<P><B>117.</B> Irassa ki részleg nevenként csoportosítva a legmagasabb és legalacsonyabb fizetést!</P>
+<P><B>118.</B> Irassa ki részleg címenként csoportosítva az átlagfizetést és a létszámot!</P>
+<P><B>119.</B> Irassa ki azoknak a dolgozóknak a nevét, beosztását és fizetését, akiknek a fizetése több, mint 'BALOGH' fizetése!</P>
+<P><B>120.</B> Irassa ki azon részlegek kódját, nevét és címét, amelyekben nem dolgozik senki!</P>
+<P><B>121.</B> Irassa ki azon autók rendszámát és típusát, melyek már több, mint kétszer voltak kötelezően szervízben!</P>
+<P><B>122.</B> Irassa ki a 3000 és 10000 Ft közötti napidíjért kölcsönözhető autók rendszámát, típusát és napidíját!</P>
+<P><B>123.</B> Irassa ki azokat az ügyfeleket, akiknek jelenleg rendelésük van! A listában legyen kiírva az ügyfél száma, neve és címe a rendelés, kölcsönzés dátumával együtt!</P>
+<P><B>124.</B> Irassa ki azokat az ügyfeleket, akik a LUXUS autócsoportból rendeltek autót! Írja ki az ügyfélszámot, a típust, a rendszámot, a napi és kilométerenkénti kölcsönzési díjat valamint a megrendelés dátumát!</P>
+<P><B>125.</B> Irassa ki a rendszámot, típust, kölcsönzési díjat, a rendelés dátumát, a kölcsönzés kezdetét, az ügyfélszámot, nevet, címet az összes megrendelésre, amely 1994. május 1. óta történt!</P>
+<P><B>126.</B> Keresse ki azokat az ügyfeleket, akiknek jelenleg nincsen rendelésük! Irassa ki az ügyfél számát, nevét, címét és a kapcsolatot tartó személy nevét!</P>
+<P><B>127.</B> Irassa ki azon autók típusát, rendszámát, napi kölcsönzési díját, amelyeknél a kölcsönzési díj értéke kevesebb, mint a RENAULT 19 típusé!</P>
+<P><B>128.</B> Készítsen listát, amely a rendelés számokat, a rendelő személy nevét, a rendelt autó típusát, leírását és a rendelés dátumát tartalmazza!</P>
+<P><B>129.</B> Irassa ki a jelenleg kölcsönzött autók rendszámát, típus nevét, a kölcsönző ügyfél számát és nevét, valamint a rendelés dátumát!
+<P><B>130.</B> Irassa ki az összes autó rendszámát és típusát, akár az AUTOK táblában, akár a RENDELES táblában szerepel!</P>
+<P><B>131.</B> Irassa ki azon autók rendszámát és típusát az AUTOK táblából, amelyek nem szerepelnek a RENDELES táblában!</P>
+
+<h2>2.6. Egymásba ágyazott lekérdezések</h2>
+<P><B>132.</B> Irassa ki azon dolgozók nevét és beosztását, akiknek a beosztása azonos 'HERCEG' beosztásával!</P>
+<P><B>133.</B> Készítsen listát azon dolgozók beosztásáról és fizetéséről, akiknek beosztása és fizetése azonos'BOGNÁR' beosztásával és fizetésével!</P>
+<P><B>134.</B> Irassa ki azon dolgozók nevét és fizetését, akik kevesebbet keresnek, mint az azonos beosztású kollégáik átlagfizetése!</P>
+<P><B>135.</B> Irassa ki azon autók rendszámát, típus nevét és kilométeróra állását, melyek többet futottak, mint az ABR-115!</P>
+<P><B>136.</B> Készítsen listát azokról az ügyfelekről, akik a NORMAL autócsoport autói közül rendeltek! A lista tartalmazza az ügyfél számát, a rendelt autó típusának nevét és a rendelés dátumát!</P>
+<P><B>137.</B> Irassa ki azon ügyfelek nevét, címét, a várost, az országot, akik RENAULT 19 típusú autót kölcsönöztek!</P>
+<P><B>138.</B> Írassuk ki az ügyfélszámot, nevet, várost az ügyfelek táblájából azokra, akiknél a rendelést a 'HOTEL CÍVIS' adta fel!</P>
+<P><B>139.</B> Írassuk ki a debreceni és budapesti megrendelők autóinak típusát, rendszámát, kölcsönzési idejének kezdetét!</P>
+<P><B>140.</B> A rendelési táblából írjunk ki 'IGEN'-t, ha az ügyfél táblában 'PAPP ÁGNES' létezik!</P>
+<P><B>141.</B> Készítsen listát azokról a megrendelésekről, amelyekben a kölcsönzött autó szervízelési intervalluma hosszabb, mint az átlagos szervízelési intervallum!</P>
+<P><B>142.</B> Irassa ki azon ügyfelek nevét és ügyfél számát, akiknek fizetési módja megegyezik a 'MOLNÁR PÉTER' nevű ügyfél fizetési módjával!</P>
+<P><B>143.</B> Irassa ki azon dolgozók nevét és kódját, akiknek beosztása szerepel a 'KÖZPONT' munkahelyen dolgozók beosztásai között!</P>
+<P><B>144.</B> Készítsen listát azokról az alkalmazottakról, akiknek beosztása megegyezik a'KIRÁLY' vagy a'KOVÁCS' nevű dolgozók beosztásával!</P>
+<P><B>145.</B> Irassa ki azoknak az ügyfeleknek a nevét és lakhelyét, akik az átlagos kölcsönzési díjnál magasabb díjat fizettek!</P>
+<P><B>146.</B> Irassa ki azon ügyfelek nevét és ügyfél számát, akik olyan autót béreltek, amelyekjelenleg karbantartásra várnak!</P>
+
+<h2>2.7. Adatdefiniciós nyelv</h2>
+<P>(CREATE, ALTER, DROP, RENAME)</p>
+<P><B>147.</B> Hozza létre az alábbi szerkezetű, DOLGOZOK nevű táblát:<BR>
+    KOD VARCHAR2(4) NOT NULL<BR>
+    NEV VARCHAR2(30) NOT NULL<BR>
+    FIZETES NUMBER<BR>
+    SZUL DAT DATE</p>
+<P><B>148.</B> Bővítse a DOLGOZOK táblát a CIM oszloppal, melynek típusa VARCHAR2(30)! A NEV hosszát módosítsa 40-re!</P>
+<P><B>149.</B> Hozza létre az UJ_RESZL1 nevű táblát, melynek szerkezete azonos a RESZLEG nevű tábla szerkezetével!</P>
+<P><B>150.</B> Hozza létre az UJ_RESZL2 nevű táblát, melynek szerkezete és tartalma azonos a RESZLEG nevű tábla szerkezetével és tartalmával!</P>
+<P><B>151.</B> Nevezze át az UJ_RESZL2 táblát RESZLEG2 névre!</P>
+<P><B>152.</B> Hozza létre azt a NEZET nevű nézettáblát, amely az ALKALMAZOTT és a RESZLEG táblából csak az'ELADÓ' beosztású dolgozók kódját, nevét, beosztását, részlegének kódját, nevét és címét tartalmazza!</P>
+<P><B>153.</B> Hozza létre azt a VIDEK nevű nézettáblát, amely csak a nem Budapesti részlegek adatait tartalmazza!</P>
+<P><B>154.</B> Hozza létre az ATLAG nevű nézettáblát, amely a részlegek kódját és az ott dolgozók átlagfizetését tartalmazza! Készítsen listát a létrehozott nézettábla segítségével, amelyben a dolgozók neve, fizetése, részlegének kódja és a részleg átlagfizetése szerepel!</P>
+<P><B>155.</B> Az előző feladatban létrehozott ATLAG nevű nézettábla felhasználásával írassa ki a dolgozók nevét, fizetését, részlegének nevét és címét, valamint a részlegben dolgozók átlagfizetését!</P>
+<P><B>156.</B> Készítse el a RENDELES és AUTOK táblák alapján az UJ_RENDELES nézettáblát, melynek oszlopai az ügyfélszám, az autócsoport, a kölcsönzött autó típusa, a rendelés dátuma, a megrendelő személy neve, a kölcsönzési idő kezdete és időtartama, valamint a fizetés módja legyenek! Listázza ki a tábla tartalmát!</P>
+<P><B>157.</B> Módosítsa az előző feladatban létrehozott nézettábla szerkezetét úgy, hogy egy oszlop a kölcsönzési idő alatt futott km-ek számát is mutassa!</P>
+<P><B>158.</B> Hozza létre az UGYFELEK, TIPUSOK, AUTO_CSOP és RENDELES táblák alapján azt az UJ_UGYFEL nevű nézettáblát, amely a következő oszlopokat tartalmazza: az ügyfél száma, neve, a kapcsolatot tartó személy neve, a rendelt autó típusa, rendszáma, rendelési ideje, a kölcsönzés ideje alatt futott km, a kölcsönzési díj km-enként és naponként!</P>
+<P><B>159.</B> Hozza létre a KOLCSON_SZAM nevű nézettáblát a RENDELES tábla alapján, amely rendszámonként tartalmazza a kölcsönzések számát! Irassa ki a nézettábla tartalmának felhasználásával az AUTOK táblában szereplő autók rendszámát, típusát és a kölcsönzések számát! Az egyszer sem kölcsönzött autóknál a kölcsönzések száma 0 legyen!</P>
+<P><B>160.</B> Hozza létre azt a táblát, amely a rendszámot, az utolsó szervíz idején mutatott és a jelenlegi km-óra állást, valamint a kötelező szervíz intervallumot tartalmazza! A tábla neve KARBANTART legyen!</P>
+<P><B>161.</B> Az AUTOK tábla alapján hozza létre az ELADO_AUTOK nevű táblát, melynek oszlopai a rendszám, a típusnév, a vásárlás dátuma és a futott kilométerek száma legyen (új oszlopnevekkel)!</P>
+<P><B>162.</B> A KARBANTART nevű táblában növeljük meg a kilométeróra állását mutató oszlop hosszát 8-ra!</P>
+<P><B>163.</B> Bővítse a KARBANTART táblát a következő szervíz nevű oszloppal! Hossza legyen 8, típusa numerikus!</P>
+<P><B>164.</B> .~lozzon létre indexet az AUTOK táblára a rendszám alapján!</P>
+<P><B>165.</B> Hozzon létre indexet a RENDELES táblához az ügyfélszám és az autó típus név szerint!</P>
+<P><B>166.</B> Törölje az UJ_RESZL1 nevű táblát!</P>
+
+<h2>2.8. Adatmanipulációs nyelv</h2>
+<P>(INSERT, UPDATE, DELETE)</p>
+<P><B>167.</B> Vigye fel a RESZLEG2 táblába a 80-as kódú részleg adatait! Részleg név: AUTOKOLCSONZO, cím: SZEGED.</P>
+<P><B>168.</B> Vigye fel a RESZLEG2 táblába a RESZLEG táblából a kölcsönző irodák adatait!</P>
+<P><B>169.</B> Vigye fel a VIDEK nézettáblába a 99-es kódú részleget FORD --- AUTO névvel, DEBRECEN címmel, majd nézze meg, hogy bekerült-e a sor a RESZLEG táblába és a nézettáblába!</P>
+<P><B>170.</B> Módosítsa a RESZLEG2 táblában a 'KÖZPONT' részleg nevét 'IRODÁK'-ra!</P>
+<P><B>171.</B> Növelje meg a 10-es kódú részlegben dolgozók fizetését 15%-kal! </P>
+<P><B>172.</B> Növelje meg az'ELADÓ' beosztású dolgozók prémiumát 10000 Ft tal!</P>
+<P><B>173.</B> Törölje ki a RESZLEG2 táblából a debreceni részlegeket!</P>
+<P><B>174,</B> Vigye fel az AUTOK táblába a legújabban beszerzett autó adatait:<BR>
+    Rendszám: CAR-342<BR>
+    Típusnév: RENAULT ESPACE<BR>
+    Autócsoport: LUXUS<BR>
+    Vásárlás dátuma: 1994. június 23.<BR>
+    Ár: 1.400.000 Ft<BR>
+    Futott km: 100<BR>
+    Utolsó szervíz: 0 km-nél<BR>
+    Állapot: kiadható (A)<BR>
+    Részleg: 20</p>
+<P><B>175.</B> Vigye fel az ELADO_AUTOK táblájába azokat az autókat, amelyek 150000-nél többet futottak!</P>
+<P><B>176.</B> Módosítsa az AUTO_CSOP táblában a kölcsönzés km-enkénti díját 10%-kal megnövelt értékre!</P>
+<P><B>177.</B> Módosítsa a NORMAL autócsoport autóira a szervízelések közötti intervallumot 12000 km-rel</P>
+<P><B>178.</B> Törölje az AUTOK táblából azokat az autókat, melyeket az ELADO_AUTOK táblába felvitt! (175. feladat)</P>
+<P><B>179.</B> Törölje az AUTOK táblából az ABC-022 rendszámú autót!</P>
+<P><B>180.</B> Írjon INSERT utasítást, amely az EXTRA autócsoport valamennyi autójának adatait beírja a most létrehozott, de még üres EX AUTOK táblába!</P>
+<P><B>181.</B> Írjon UPDATE utasítást, amely az EX_AUTOK tábla valamennyi 'OPEL ASTRA' típusú autó részleg kódját'99'-re módosítja!
+<P><B>182.</B> Törölje az EX AUTOK tábla tartalmát a'99'-es kódú autók kivételével!</P>
+<P><B>183.</B> Vigye át az AUTOK táblából az ELADO_AUTOK táblába azon járművek adatait, amelyek az autócsoportjuk átlagánál 50%-kal több kilométert futottak!</P>
+<P><B>184.</B> Új ügyfelet kell felvennie az UGYFELEK táblába! <BR>
+    (Hozzon létre egy szekvenciát 351-es kezdőértékkel!) <BR>
+    Ügyfélszáma: a táblában következő érték <BR>
+    Neve: Karát KFT. <BR>
+    Címe: 4025 Debrecen, Nyugati utca 7. <BR>
+    Megbízott: Nagy Péterné <BR>
+    A cég átutalással fizet.</P>
+<P><B>185.</B> Írja be a RENDELES táblába az előző feladatban felvitt ügyfél 1994. június 24-én feladott SKODA CL típusú autóra Kiss Jánosné ügyintéző által feladott rendelését!<BR>
+    A kölcsönzés időtartama 1994. július 1-től kezdődően 5 nap.<BR>
+    A tábla utolsó rendelésének sorszáma 12345. (Szekvencia!)</P>
+
+<h2>2.9. Adatvezérlő nyelv</h2>
+<P>(COMMIT, ROLLBACK, GRANT, REVOKE)</p>
+<P><B>186.</B> Listázza ki az ALKALMAZOTT tábla tartalmát!<BR>
+    Adja ki a COMMIT parancsot) Törölje az'ELADÓ' beosztású dolgozókat!<BR>
+    Mindenki fizetését emeljük meg 20%-kal!<BR>
+    Listázza ki az ALKALMAZOTT tábla tartalmát!<BR>
+    Adja ki a ROLLBACK parancsot!<BR>
+    Listázza ki az ALKALMAZOTT tábla tartalmát!<BR>
+    Figyelje meg, hogy a tábla tartalma hogyan változott az egyes parancsok kiadása után!</P>
+<P><B>187.</B> Adjon a TOTH nevű felhasználónak lekérdezési jogot a RENDELES táblához! (TOTH nevű felhasználónak léteznie kell!)</P>
+<P><B>188.</B> Adjon a TOTH nevű felhasználónak jogot a lekérdezéshez és a módosításhoz a RENDELES táblában!</P>
+<P><B>189.</B> Adjon jogot TOTH-nak bármely, a RENDELES táblával kapcsolatos művelet elvégzésére!</P>
+<P><B>190.</B> Tegye publikussá a RENDELES táblát!</P>
+<P><B>191.</B> Tegye lehetővé, hogy TOTH továbbadhassa a RENDELES táblára kapott SELECT jogot!</P>
+<P><B>192.</B> Vonja vissza TOTH-tól a RENDELES táblához kapott törlési és módosítási jogot!</P>
+<P><B>193.</B> Változtassa meg a jelszavát!</P>
+</BODY>
+</HTML>

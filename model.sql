@@ -1,3 +1,6 @@
+show search_path;
+set search_path = kereskedes;
+
 drop table if exists AUTO_CSOP CASCADE ; 
 drop table if exists TIPUSOK CASCADE ; 
 drop table if exists AUTOK CASCADE ;
