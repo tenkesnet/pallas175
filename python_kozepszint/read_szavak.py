@@ -25,7 +25,7 @@ class SzotarElem:
 
 def loadSzavak():
     word_list: List[SzotarElem] = []
-    mxcv = 0
+    maxGyak = 0
     maxelem = SzotarElem()
     for line in open("data/magyar-szavak-kat.txt", "r", encoding="utf-8"):
         if line.strip() == "":
@@ -44,11 +44,13 @@ def loadSzavak():
         e = SzotarElem(szo, lemma, szofaj, szotagszam, cv, szoGyak, lemmaGyak)
         # word_list.append(e)
         lst = cv.split("c")
-        if get_max_length(lst) > mxcv:
-            mxcv = get_max_length(lst)
-            maxelem = e
-    return maxelem
 
+        if int(szoGyak) > maxGyak:
+            maxGyak = int(szoGyak)
+    return maxGyak
+
+
+# van mindenki?   a mikrofon jó
 
 a = {1, 2, 3}
 b = a
