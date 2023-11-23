@@ -111,7 +111,7 @@ insert into sz_automarka (nev) values ('audi');
 
 insert into sz_autotipus (megnevezes,marka,leiras) values ('bevásárló','opel',null);
 
-insert into sz_auto (szin,elso_vasarlas_idopontja,elso_vasarlasi_ar,tipus_azon.rendszam) values ();
+insert into sz_auto (azon,szin,elso_vasarlas_idopontja,elso_vasarlasi_ar,tipus_azon,rendszam) values (default,'kék','2005-06-23',3400000,1,'HFG333');
 
 insert into sz_auto_tulajdonosa values (1,'2008-10-20',2);
 
