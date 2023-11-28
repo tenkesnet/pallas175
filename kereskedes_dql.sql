@@ -41,6 +41,31 @@ select * from alkalmazott where fizetes between 50000 and 100000;
 select id,alk_kod,alk_nev ,beosztas ,fizetes , coalesce(premium,0) from alkalmazott ;
 
 --48. Irassa ki azon alkalmazottak adatait, akik nevének második betűje az 'O' betű!
+select * from alkalmazott a where alk_nev like '_O%';
+
+--45. Irassa ki a 10, 20 vagy 60-as telepen dolgozók adatait!
+select * from alkalmazott a , reszleg r where a.reszleg_id = r.id and r.reszleg_kod in (10,20,60);
+
+--44. Irassa ki azon dolgozók adatait, akiknek a beosztása 'TELEPHELYVEZETŐ' vagy 'SZERELŐ'!
+select * from alkalmazott a where beosztas in ('TELEPHELYVEZETO','SZERELO');
+
+--50. Irassa ki azon alkalmazottak adatait, akik a 10-es részlegben dolgoznak és beosztásuk 'ELADÓ', vagy nem kaptak prémiumot!
+select * from alkalmazott a , reszleg r where a.reszleg_id = r.id and (r.reszleg_kod=20 and (a.beosztas='ELADO' or a.premium is null));
+
+--53. Irassa ki azon dolgozók adatait, akiknek a fizetése kisebb, mint a prémiumuk kétszerese!
+select * from alkalmazott a where fizetes<2*premium ;
+
+--56. Irassa ki azon megrendelések adatait, amelyekben a kölcsönzött (nem kifizetett) autó típusnevében szerepel a RENAULT szó!
+select * from rendeles r , tipusok t where r.tipusok_id = t.id and t.tipus_nev like '%RENAULT%' and r.fizetes = 'N';
+
+
+
+
+
+
+
+
+
 
 
 
