@@ -137,7 +137,7 @@ select current_date - r.rendeles_datum,* from rendeles r where current_date - r.
 
 --81. Ha feltesszük, hogy az amortizáció az eredeti ár 3%-a havonta, akkor írassuk ki, hogy az 1994 előtt vásárolt autóknak mennyi a jelenlegi értéke!
 
-select TRUNC( (extract(year from age(current_date, vasarlas_datuma ))*12 + extract(month from age(current_date, vasarlas_datuma)))::numeric ,0) ho,
+select vasarlas_datuma, TRUNC( (extract(year from age(current_date, vasarlas_datuma ))*12 + extract(month from age(current_date, vasarlas_datuma)))::numeric ,0) ho,
 (ar/100)*3 amort_ert,
 ar vasarlasi_ar,
 ar-((ar/100)*3*TRUNC( (extract(year from age(current_date, vasarlas_datuma ))*12 + extract(month from age(current_date, vasarlas_datuma)))::numeric ,0)) jelenlegi_ert
@@ -146,7 +146,51 @@ FROM autok WHERE vasarlas_datuma < '1994-01-01';
 
 select extract(year from age(current_date, vasarlas_datuma )),extract(month from age(current_date, vasarlas_datuma))from autok a ;
 
-select 1300000-39000*371;
+--82. Irassa ki a rendelések táblájából az ügyfelek számát, a rendelésük dátumát, valamint a kölcsönzés kezdetének időpontját a magyar szokásoknak megfelelően! (év. hó. nap.)
+
+SELECT id,TO_CHAR(rendeles_datum,'YYYY.MM.DD') rendeles, TO_CHAR(kolcson_kezdete,'YYYY.MM.DD') kolcsonzes FROM rendeles;
+SELECT id,rendeles_datum, kolcson_kezdete FROM rendeles;
+
+--83. Írja ki a mai dátumot követő 90. nap dátumát! (SYSDATE)
+select current_date + 90;
+
+--84. Írja kí az alkalmazottak táblájából a belépés dátumát és annak 5 hónappal megnövelt értékét!
+SELECT belepes,belepes + interval '5 month' FROM alkalmazott;
+
+--85. Írja ki minden alkalmazottra a rendszerdátum (SYSDATE) és a belépés dátuma közötti hónapok számát!
+
+SELECT alk_nev,(extract(year from age(current_date, belepes ))*12 + extract(month from age(current_date, belepes)))::numeric as "eltelt hónapok" FROM alkalmazott;
+
+--86. Írja ki a rendszerdátumhoz legközelebbi 'Friday' dátumát, valamint a hónap utolsó napjának dátumát!
+-- az 5+7 -et kell változtatni az 5-ös helyére a nap számát, ahol a 0 avasárnap és 6-os a szombat
+SELECT 'TOMORROW'::date + ( 5 + 7 - extract ( dow FROM 'TOMORROW'::date))::int%7, (date_trunc('MONTH', current_date) + INTERVAL '1 MONTH - 1 day')::date;
+
+--87. Irassa ki a '1994. 06. 07.' karaktersorozat dátummá konvertált alakját!
+
+SELECT TO_DATE('2080 06 07','YY-MM-DD');
+
+--88. Írja ki a belépés dátumát'YYYY.Month.DAY' formában!
+
+SELECT TO_CHAR(belepes,'YYYY.Month.DAY') FROM alkalmazott;
+
+--89. Írja ki a saját születési dátumát betűkkel! 'Year Month Day'
+SELECT TO_CHAR(TO_DATE('1975.01.20','YYYY.MM.DD'), 'YYYY Month DD');
+
+--93. Irassa ki az alkalmazottak táblájából a minimális, a maximális, az összes és az átlagfizetést, valamint a létszámot!
+
+SELECT MIN(fizetes),MAX(fizetes),SUM(fizetes),AVG(fizetes),COUNT(fizetes) FROM alkalmazott;
+
+--94. Irassa ki a részlegkódot, a minimális, a maximálís, az összes és átlagfizetést, valamint a létszámot részlegenkénti csoportosításban!
+
+SELECT reszleg_kod,MIN(fizetes),MAX(fizetes),SUM(fizetes),AVG(fizetes),COUNT(fizetes) FROM alkalmazott a, reszleg r  where  a.reszleg_id = r.id GROUP BY r.reszleg_kod order by r.reszleg_kod asc;
+
+--96. Irassa ki a részlegkódot, átlagfizetést azokra a részlegekre, ahol az átlagfizetés 8000 Ft-nál nagyobb!
+
+SELECT reszleg_kod,AVG(fizetes) FROM alkalmazott a, reszleg r  where  a.reszleg_id = r.id GROUP BY r.reszleg_kod having avg(fizetes)>18000 order by r.reszleg_kod asc;
+
+--97. Irassa ki azon a részlegek kódját, ahol pontosan ketten dolgoznak!
+
+SELECT reszleg_kod,alk_nev  FROM alkalmazott a, reszleg r  where  a.reszleg_id = r.id GROUP BY r.reszleg_kod,a.alk_nev  having count(a.alk_nev)=2 order by r.reszleg_kod asc;
 
 
 
