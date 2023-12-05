@@ -1,3 +1,5 @@
+show search_path;
+set search_path = kereskedes;
 --select mezőnevek from táblanevek where feltételek group by csoportosítás having csoportosítás szűrés order by rendezés;
 
 select rendszam,tipus_nev,ar from autok, tipusok where autok.tipusok_id = tipusok.id ;
@@ -58,19 +60,93 @@ select * from alkalmazott a where fizetes<2*premium ;
 --56. Irassa ki azon megrendelések adatait, amelyekben a kölcsönzött (nem kifizetett) autó típusnevében szerepel a RENAULT szó!
 select * from rendeles r , tipusok t where r.tipusok_id = t.id and t.tipus_nev like '%RENAULT%' and r.fizetes = 'N';
 
+--54. Irassa ki azokat a rendelés adatokat, amelyekben a kölcsönzés végén a kilométeróra állása legalább 1000-rel mutat többet, mint az elején vagy a kölcsönzött napok száma nagyobb 10-nél!
+select * from rendeles r where km_veg is not null and (km_veg-km_kezdet>1000 or napok>10); 
+
+--57. Készítsen listát azon autók adatairól, amelyek kilométer díja 100 és 300 Ft között van és napi kölcsönzési díja kevesebb, mint 6000 Ft!
+select * from autok a , tipusok t , auto_csop ac where a.tipusok_id = t.id and t.auto_csop_id = ac.id and ac.km_dij between 50 and 300 and ac.napi_dij <6000 ;
+
+--58. Listázza ki azokat az autótípus jellemzőket, amelyek az E-vel kezdődő nevű autócsoportba tartoznak!
+select * from tipusok t , auto_csop ac where t.auto_csop_id = ac.id and ac.auto_csop_nev like 'E%';
+
+--55. Készítsen listát azon megrendelésekben tárolt adatokról, amelyekben a következő rendszámú autók közül kölcsönöztek: ABC-123, ABR-047, BAH-115, CDE-324!
+select * from rendeles r, autok a  where r.rendszam_id = a.id and a.rendszam in ('ABC-123', 'ABR-047', 'BAH-115', 'CDE-324');
+
+--61. Irassa ki az alkalmazottak nevét nagy kezdőbetűkkel, beosztásukat csupa kis betűvel!
+select initcap(a.alk_nev),lower(a.beosztas)  from alkalmazott a ;
+
+--63. Készítsen listát az összes készpénzzel fizető ügyfélről! Az ügyfél nevét, számát és a fizetési módját a következő szöveg után írja ki: 'ÜGYFÉL:'
+
+select 'ÜGYFÉL: '||u.ugyfel_nev||','||u.ugyfel_szam||','||u.fizetesi_mod  from ugyfelek u where u.fizetesi_mod = 'K' ;
+
+--64. Irassa ki az ügyfelek számát, nevét és megbízottját úgy, hogy a megbízott neve nagybetűvel kezdődjön és a többi karaktere kisbetűs legyen vagy 
+--10 db '*' szerepeljen az üres mező helyén!
+
+select u.ugyfel_szam , u.ugyfel_nev , coalesce(initcap(u.megbizott),'**********') from ugyfelek u ;
+
+--65. A 'minden|szo nagy,betuvel.kezdodik' karaktersorozatra alkalmazzuk az INITCAP függvényt! (DUAL tábla)
+
+select initcap('minden|szo nagy,betuvel.kezdodik') ;
+
+--66. Irassa ki az alkalmazottak beosztását kisbetűvel és azt, hogy az alkalmazott neve hány karakterből áll!
+select lower(a.beosztas),length(a.alk_nev)  from alkalmazott a ;
+
+--67. Irassa ki a beosztásokat, és a beosztások 4-6. karakterét kisbetűssé alakítva!
+select lower(substr(a.beosztas,4,3)),a.beosztas from alkalmazott a ;
+
+--70. Irassa ki a 'KAKAS' karaktersorozatot úgy, hogy balról vágjuk le az 'A' és 'K' karaktereket!
+select  ltrim( ltrim('KAKAS','K'),'A'); 
+
+select ABS(1000), ABS(-100) , ABS(-27.11);
+select SQRT(25), SQRT(36);
+select POWER(5,2);
+select ROUND(-123.456,2), ROUND(123.556,0),ROUND(123.456,-1), ROUND(-123.4567,2);
+select TRUNC(123.45,1), TRUNC(123.45,0) ,TRUNC(123.45,-1), TRUNC(123.45,-2);
+select SIGN(10), SIGN(0), SIGN(-5);
+select CEIL(6.1), CEIL(-6.1);
+select FLOOR(6.1), FLOOR(-6.1);
+select MOD(10,3);
+
+--74. Írjon SELECT parancsot, amely kerekítve kiírja, hogy mennyibe kerül 3 napra 257 km-re egy'NORMAL' autócsoportba tartozó autó kölcsönzése!
+SELECT ROUND(3*napi_dij+275*km_dij) FROM auto_csop WHERE auto_csop_nev='NORMAL';
+
+--73. Irassa ki az alkalmazottak nevét, fizetését és fizetésének címletezését! Hány db 5000, 1000, 500 és 100 Ft-os szükséges a kifizetéshez?
+SELECT 
+sum((fizetes/5000)) otezer,
+sum(((fizetes%5000)/1000)) ezer,
+sum((((fizetes%5000)%1000)/500)) otszaz,
+sum(((((fizetes%5000)%1000)%500)/100)) szaz,
+sum(((((fizetes%5000)%1000)%500%100)/50)) otven
+FROM alkalmazott ;
+
+--77. Írassuk ki az AUTOK táblából a NORMAL autócsoport minden autójának rendszámát, típusnevét és vásárlási időpontját 'the 6 day of Jun, 1994'- hez hasonló formában!
+
+select a.rendszam,t.tipus_nev , to_char(a.vasarlas_datuma,'the DD day of Mon, YYYY') vasarlas_datuma from autok a , auto_csop ac, tipusok t where a.auto_csop_id = ac.id and a.tipusok_id = t.id  and lower(ac.auto_csop_nev) = 'normal' ;
+
+select a.rendszam,t.tipus_nev , to_char(a.vasarlas_datuma,'Q.  YYYY.Mon.DD') vasarlas_datuma from autok a , auto_csop ac, tipusok t where a.auto_csop_id = ac.id and a.tipusok_id = t.id  and lower(ac.auto_csop_nev) = 'normal' ;
+
+--78. Irassa ki azokat a rendelés adatokat, ahol a rendelés feladása és a kölcsönzés kezdete között 1 hétnél kevesebb idő van!
+select r.kolcson_kezdete - r.rendeles_datum,* from rendeles r where r.kolcson_kezdete - r.rendeles_datum < 7;
+
+--79. Készítsen listát az összes olyan rendelés tételről, ahol a kölcsönzési idő 10 napnál hosszabb!
+SELECT * FROM rendeles WHERE napok > 10;
+
+--80. Irassa ki az elmúlt 7 nap rendelés adatait! (SYSDATE)
+select current_date , now();
+select current_date - r.rendeles_datum,* from rendeles r where current_date - r.rendeles_datum <7;
+
+--81. Ha feltesszük, hogy az amortizáció az eredeti ár 3%-a havonta, akkor írassuk ki, hogy az 1994 előtt vásárolt autóknak mennyi a jelenlegi értéke!
+
+select TRUNC( (extract(year from age(current_date, vasarlas_datuma ))*12 + extract(month from age(current_date, vasarlas_datuma)))::numeric ,0) ho,
+(ar/100)*3 amort_ert,
+ar vasarlasi_ar,
+ar-((ar/100)*3*TRUNC( (extract(year from age(current_date, vasarlas_datuma ))*12 + extract(month from age(current_date, vasarlas_datuma)))::numeric ,0)) jelenlegi_ert
+FROM autok WHERE vasarlas_datuma < '1994-01-01';
 
 
+select extract(year from age(current_date, vasarlas_datuma )),extract(month from age(current_date, vasarlas_datuma))from autok a ;
 
-
-
-
-
-
-
-
-
-
-
+select 1300000-39000*371;
 
 
 
