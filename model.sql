@@ -1,5 +1,7 @@
-show search_path;
+--show search_path;
+--create schema kereskedes;
 set search_path = kereskedes;
+--set search_path = auto;
 
 drop table if exists AUTO_CSOP CASCADE ; 
 drop table if exists TIPUSOK CASCADE ; 
@@ -16,7 +18,6 @@ AUTO_CSOP tábla létrehozása
 
 
 --
-
 create table AUTO_CSOP(
     id serial primary key,
     auto_csop_nev varchar(6) not null,
@@ -144,6 +145,8 @@ insert into ALKALMAZOTT (alk_kod,alk_nev,beosztas,belepes,fizetes,premium,reszle
 values ('1248','HORVAT','TELEPHELYVEZETO','19931209',25000,12000,(select id from reszleg where reszleg_kod='60'));
 insert into ALKALMAZOTT (alk_kod,alk_nev,beosztas,belepes,fizetes,premium,reszleg_id)
 values ('1249','KISS','ELADO','19931223',12500, 9500,(select id from reszleg where reszleg_kod='20'));
+
+
 /*************************/
 /*************************/
 
@@ -245,7 +248,7 @@ values ('PDP-101',(select id from tipusok where tipus_nev='RENAULT ESPACE'),(sel
 insert into AUTOK (rendszam,tipusok_id,auto_csop_id,vasarlas_datuma,ar,futott_km,ut_szerviz,allapot,reszleg_id,alkalmazott_id)
 values ('CBN-001',(select id from tipusok where tipus_nev='W VENTO CL'),(select id from auto_csop where auto_csop_nev='EXTRA'),'19940102','1999000','152311','150600','F',(select id from reszleg where reszleg_kod=60),(select id from alkalmazott where alk_kod=1241));
 insert into AUTOK (rendszam,tipusok_id,auto_csop_id,vasarlas_datuma,ar,futott_km,ut_szerviz,allapot,reszleg_id,alkalmazott_id)
-values ('CDD-115',(select id from tipusok where tipus_nev='RENAULT TWINGO'),(select id from auto_csop where auto_csop_nev='NORMAL'),'19940103','955000','8307',NULL,'S',(select id from reszleg where reszleg_kod=20),(select id from alkalmazott where alk_kod=1234));
+values ('CDA-115',(select id from tipusok where tipus_nev='RENAULT TWINGO'),(select id from auto_csop where auto_csop_nev='NORMAL'),'19940103','955000','8307',NULL,'S',(select id from reszleg where reszleg_kod=20),(select id from alkalmazott where alk_kod=1234));
 /*************************/
 /*************************/
 
@@ -263,9 +266,9 @@ rendeles_datum date,
 rendelo_szemely varchar(12),
 kolcson_kezdete date,
 napok int8,
-rendszam_id serial not null references autok(id),
+rendszam_id int references autok(id),
 --tipus_nev varchar(15),
-tipusok_id serial not null references tipusok(id),
+tipusok_id int not null references tipusok(id),
 km_kezdet int8,
 km_veg int8,
 kolcson_dij int8,

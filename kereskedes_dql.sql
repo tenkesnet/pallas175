@@ -190,7 +190,71 @@ SELECT reszleg_kod,AVG(fizetes) FROM alkalmazott a, reszleg r  where  a.reszleg_
 
 --97. Irassa ki azon a részlegek kódját, ahol pontosan ketten dolgoznak!
 
-SELECT reszleg_kod,alk_nev  FROM alkalmazott a, reszleg r  where  a.reszleg_id = r.id GROUP BY r.reszleg_kod,a.alk_nev  having count(a.alk_nev)=2 order by r.reszleg_kod asc;
+SELECT reszleg_kod,beosztas,count(*)  FROM alkalmazott a, reszleg r  where  a.reszleg_id = r.id GROUP BY r.reszleg_kod,a.beosztas  --having count(a.alk_nev)=2 order by r.reszleg_kod asc;
+;
+
+--100. Írjon SELECT parancsot, amely a készpénzzel fizető ügyfelek létszámát kiírja! Használja a HAVING utasításrészt azon ügyfelek kiírására, akik nem átutalással fizettek!
+SELECT COUNT(*) FROM ugyfelek GROUP BY fizetesi_mod HAVING fizetesi_mod <> 'A';
+
+--101. Irassa ki az AUTOK táblából a különböző típusokat, azt hogy melyikből hány darab van! Típusonként jelenjen meg az átlagos beszerzési ár! Az eredmény névsor szerint rendezve jelenjen meg!
+select t.tipus_nev, count(*), avg(a.ar) from autok a, tipusok t where a.tipusok_id = t.id group by t.tipus_nev order by t.tipus_nev ;
+
+--105. Irassa ki típusnevenként csoportosítva az átlagos kilométeróra állást.
+select t.tipus_nev, avg(a.futott_km) from autok a , tipusok t where a.tipusok_id = t.id group by t.tipus_nev;
+
+--103. Irassa ki a legtöbbet és a legkevesebbet futott autó adatait!
+select * from autok a where futott_km = (select min(futott_km) from autok);
+select * from autok a where futott_km = (select max(futott_km) from autok);
+
+--110. Irassa ki azokat a megrendeléseket, ahol a kölcsönzés ideje alatt megtett kilométer a maximális illetve minimális!
+select * from rendeles where km_veg-km_kezdet=(select min(km_veg-km_kezdet)  from rendeles) or km_veg-km_kezdet=(select max(km_veg-km_kezdet)  from rendeles);
+
+
+--114. Készítsen listát, amely tartalmazza a dolgozó nevét, beosztását, részleg kódját, a részleg nevét és címét névsor szerinti sorrendben!
+select * from alkalmazott a , reszleg r where a.reszleg_id = r.id ;
+select * from  alkalmazott a join reszleg r on a.reszleg_id = r.id ;
+
+select * from autok a  join rendeles r on a.id = r.rendszam_id;
+
+select rendszam_id , count(*) from rendeles r group by r.rendszam_id; 
+
+select * from autok a ;
+select * from rendeles r  ;
+
+--116. Irassa ki a Győrött dolgozók adatait!
+
+select * from alkalmazott a join reszleg r on a.reszleg_id =r.id where r.reszleg_cim ='GYOR';
+
+--117. Irassa ki részleg nevenként csoportosítva a legmagasabb és legalacsonyabb fizetést!
+select r.reszleg_nev ,min(a.fizetes),max(a.fizetes) from alkalmazott a join reszleg r on a.reszleg_id =r.id group by r.reszleg_nev ;
+
+--119. Irassa ki azoknak a dolgozóknak a nevét, beosztását és fizetését, akiknek a fizetése több, mint 'BALOGH' fizetése!
+select * from alkalmazott a where fizetes>(select fizetes from alkalmazott a2 where a2.alk_nev='BALOGH');
+
+--120. Irassa ki azon részlegek kódját, nevét és címét, amelyekben nem dolgozik senki!
+SELECT a.reszleg_id,r.reszleg_nev  ,count(*) FROM reszleg r left join alkalmazott a on a.reszleg_id=r.id where a.reszleg_id is null group by a.reszleg_id,r.reszleg_nev  ;
+
+select * from alkalmazott a ;
+select * from reszleg r  ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
