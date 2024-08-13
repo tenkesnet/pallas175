@@ -114,6 +114,14 @@ create table ALKALMAZOTT(
     premium int8,
     reszleg_id serial not null references reszleg(id)
 );
+
+/* Many-To-Many kapcsolat esetén kell a kapcsolótábla
+ * create table alkalmazott_reszleg (
+	reszleg_id int not null references reszleg(id),
+	alkalmazott_id int not null references alkalmazott(id),
+	primary key(reszleg_id,alkalmazott_id)
+);*/
+
 /**************************
 ALKALMAZOTT tábla feltöltése
 **************************/

@@ -1,0 +1,73 @@
+Alap parancs ige:
+
+Add: Hozzáadás, például tartalom hozzáfűzése egy meglévő fájlhoz
+Get: Adat, beállítás lekérdezése, például egy fájl jogosultságainak kérése
+New: Új elem (például új fájl) létrehozása
+Remove: Eltávolítás, például fájl törlése
+Set: Beállítás, például fájl jogosultságainak beállítása
+
+Alap Paraméterek:
+
+Verbose -  Részletes leírást ad a parancs által elvégzett műveletről.
+Debug - A parancselem működéséről hibakeresési céllal nyomkövetési (debugging) információkat ad.
+ErrorAction - Megadhatjuk, hogy viselkedjen a parancselem hiba esetén. A lehetséges beállítások: Continue (ez az alamértelmezés: folytatás, tájékoztat a hiba tényéről és folytatja a futást), Stop (megállás, hiba esetén a parancselem befejezi a futást), SilentlyContinue (csendben folytatja a működést, nem írja ki, hogy hiba történt, és folytatja a futást), Inquire (megkérdezi, hogy kívánjuk-e folytatni a műveletet).
+ErrorVariable - Az argumentum után egy változó nevét adhatjuk meg (dollárjel nélkül), amelybe a parancselem feljegyzi a futása során felmerülő hibákat. OutVariable A parancselem a kimenetét az argumentum után megadott változóban is elhelyezi, és a csőben is továbbküldi. (A változó nevét itt is dollárjel nélkül kell megadni.)
+OutBuffer - Megadhatjuk, hogy hány objektumot szeretnénk a pufferben tárolni a csőben lévő következő parancs hívása előtt.
+WhatIf - Kiírja, hogy mi történne, ha a parancsot lefuttatnánk, anélkül, hogy bármit módosítana. (Csak azokkal a parancselemekkel használható, amelyek a rendszeren módosításokat végeznek.)
+Confirm - A módosítások előtt megerősítést kér. (Csak azokkal a parancselemekkel használható, amelyek a rendszeren módosításokat végeznek.)
+
+
+Alap parancsok:
+
+dir - Get-ChildItem
+copy - Copy-Item
+mkdir - New-Item
+cd - Set-Location
+alias - Get-Alias
+dátum lekérése - Get-Date
+parancsok kilistázása - Get-Command
+Segítság - Get-Help (legfontosabb parametere -Detaild)
+cat/type - Get-Content
+Objektum tulajdonságok kiírása - Get-Member
+
+Változó kezelés:
+$a= Get-Date -Format "dd" //$a -ban a hó aktuális napja lesz
+
+objektum metódusok használata:
+$a = "Hello %1!"
+$a.Replace("%1","Pallas") // eredmény: Hello Pallas!
+New-Item -Name powershell -ItemType Directory; $a = Get-Date -Format "yyyyMMdd"; New-Item -Name "./powershell/$a.txt" -ItemType File
+$a="valami.txt"
+$a.LastIndexOf(".")
+
+$a="Pécs;Siklósi;Varga Dénes;45"
+$a.Split(";")
+$b=$a.Split(";")
+
+$b[$b.Length-1] - a tömb utolsó eleme
+
+Operátorok:-eq Equals Egyenlő
+-lt Less than Kisebb mint
+-gt Greater than Nagyobb mint
+-le Less than or equal to Kisebb vagy egyenlő
+-ge Greater than or equal to Nagyobb vagy egyenlő
+-not Not Logikai tagadás
+-match Matches Karakterláncok vizsgálata reguláris kifejezésekkel; igaz, ha a kifejezés benne van a karakterláncban
+-notmatch Doesn’t match Karakterláncok vizsgálata reguláris kifejezésekkel; igaz, ha a kifejezés nincs benne a karakterláncban
+-like Is like Karakterláncok vizsgálata helyettesítő karakterekkel; igaz, ha a helyettesítőkarakteres kifejezés illeszkedik a karakterláncra
+-notlike Is not like Karakterláncok vizsgálata helyettesítő karakterekkel; igaz, ha a helyettesítőkarakteres kifejezés nem illeszkedik a karakterláncra
+-contains Contains Ellenőrzi, hogy egy gyűjteménynek tagja-e az adott objektum; az eredmény igaz, ha igen
+-notcontains Doesn’t contain Ellenőrzi, hogy egy gyűjteménynek tagja-e az adott objektum; az eredmény igaz, ha nem
+-replace Replace string Karakterláncok cseréje; megegyezik a karakterláncok Replace metódusával
+-and And Logikai ÉS (logikai értékekre használható)
+-or Or Logikai VAGY (logikai értékekre használható)
+-band Bitwise and Bitenkénti ÉS (egész számokra használható)
+-bor Bitwise or Bitenkénti VAGY (egész számokra használható)
+-xor Exclusive or Kizáró VAGY
+
+az aktuális könyvtárból átmásolja az össze .zip file-t egy adott konyvtárba (jellen pillanatban a 'powershell' könyvtárba)
+for($i=0;$i -lt $a.Length;$i++) { if($a[$i].Name -like "*.zip") { $a[$i].CopyTo("./powershell/"+$a[$i].Name) } }
+
+
+
+
