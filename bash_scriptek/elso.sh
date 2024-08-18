@@ -22,14 +22,39 @@ lista=($(ls ~))
 #     touch file${num}.txt
 # done
 
-read -p "What is your name? " name
-while [[ -z ${name} ]]
+read -p "What is your name? " car
+while [[ -z ${car} ]]
 do
 echo "Your name can not be blank. Please enter a valid
 name!"
-read -p "Enter your name again? " name
+read -p "Enter your name again? " car
 done
-echo "Hi there ${name}"
+
+# if [[ "${name}" != "${admin}" ]] || [[ $EUID != 1000 ]] ;
+# then
+# echo "You are not the admin or root user, but please be
+# safe!"
+# else
+# echo "You are the admin user! This could be very
+# destructive!"
+# fi
+
+case $car in
+    Tesla)
+        echo -n "${car}'s car factory is in the USA."
+        ;;
+    BMW | Mercedes | Audi | Porsche)
+        echo -n "${car}'s car factory is in Germany."
+        ;;
+    Toyota | Mazda | Mitsubishi | Subaru)
+        echo -n "${car}'s car factory is in Japan."
+        ;;
+    *)
+        echo -n "${car} is an unknown car brand"
+        ;;
+esac
+echo 
+
 
 
 # File test operators
